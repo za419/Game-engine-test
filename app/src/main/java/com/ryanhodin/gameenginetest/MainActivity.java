@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
 		sleep(2500 + (1 / factor));
 		text.append("\nWell, I'll tell you.");
 		sleep(2500);
-		text.prepend("You're awake... Finally. We don't have a lot of time.\n");
+		text.prepend("You're awake... Finally. We don't have a lot of time.\n\n");
 		sleep(1250);
 		text.prepend("Just remember... This is not what it seems to be.\n\n");
 		sleep(3500);
@@ -171,8 +171,6 @@ public class MainActivity extends AppCompatActivity {
 								.setListener(new AnimatorListenerAdapter() {
 									@Override
 									public void onAnimationEnd(Animator animation) {
-										layout.removeView(body);
-
 										// TODO: Head and tail animate together, then one disappears
 										// Then the screen fades to the color View.
 									}
