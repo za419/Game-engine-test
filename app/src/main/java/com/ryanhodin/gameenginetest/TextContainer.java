@@ -72,6 +72,10 @@ public class TextContainer {
 		return text(text()+addition);
 	}
 
+	public String prepend(String addition) {
+		return text(addition+text());
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		return obj instanceof TextContainer && ((TextContainer) obj).mText.equals(mText);
