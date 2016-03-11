@@ -8,6 +8,8 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 	private ViewGroup layout; // A handle to the main frame
 
+	private double factor=2.5; // Timing delay factor
+
 	private Thread worker;
 
 	protected TextContainer text;
@@ -52,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
 	public boolean sleep(long millis) {
 		try {
-			Thread.sleep(10*millis);
+			Thread.sleep(Math.round(factor*millis));
 		} catch (InterruptedException e) {
 			return true;
 		}
@@ -63,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 		text.text("Hello there.");
 		sleep(2500);
 		text.append("\n\nYou must be wondering why I brought you here.");
-		sleep(2600);
+		sleep(2500+Math.round(1/factor));
 		text.append("\nWell, I'll tell you.");
 		sleep(2500);
 		text.prepend("You're awake... Finally. We don't have a lot of time.\n");
