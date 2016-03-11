@@ -82,8 +82,8 @@ public class TextContainer {
 		return tc.toString();
 	}
 
-	public abstract static class Callable { // Used as a callback for when text changes
+	public interface Callable { // Used as a callback for when text changes
 		// Called with the text pre- and post- the change for which this is called
-		public abstract void call(String old, String replacement);
+		void call(String old, String replacement);
 	}
 }
