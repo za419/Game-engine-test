@@ -167,7 +167,7 @@ public class MainActivity extends AppCompatActivity {
 				.setDuration(fadeLength)
 				.setListener(null);
 
-		layout.animate()
+		tv.animate()
 				.alpha(0)
 				.setDuration(fadeLength)
 				.setListener(new AnimatorListenerAdapter() {
