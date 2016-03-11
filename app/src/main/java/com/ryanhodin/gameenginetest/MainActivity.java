@@ -107,10 +107,10 @@ public class MainActivity extends AppCompatActivity {
 		sleep(1250);
 		text.append("\n\nJust stay still, stay calm. No point in fighting now.\n\n\n");
 		sleep(2000);
-		String closer="Everything is going to be alright.\n";
+		String closer="Everything is going to be alright.";
 
 		text.forceCallbackSuspend();
-		text.prepend(closer);
+		text.prepend(closer+"\n\n");
 		text.append(closer);
 		text.forceCallbackContinue();
 	}
