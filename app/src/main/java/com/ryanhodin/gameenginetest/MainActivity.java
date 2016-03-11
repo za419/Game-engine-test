@@ -9,7 +9,8 @@ public class MainActivity extends AppCompatActivity {
 	private TextView tv; // The currently displayed textview.
 	private ViewGroup layout; // A handle to the main frame
 
-	private double factor=2.5; // Timing delay factor
+	private int animLength;
+	private double factor; // Timing delay factor
 
 	private Thread worker;
 
@@ -48,14 +49,9 @@ public class MainActivity extends AppCompatActivity {
 				public void run() {
 					layout.addView(overlay);
 					overlay.setText(replacement);
-				}
-			});
-			sleep(250 / factor);
-			runOnUiThread(new Runnable() {
-				@Override
-				public void run() {
-					layout.removeView(tv);
-					tv=overlay;
+					overlay.setAlpha(0);
+
+
 				}
 			});
 		}
