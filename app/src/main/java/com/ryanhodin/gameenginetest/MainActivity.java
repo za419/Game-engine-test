@@ -9,8 +9,10 @@ import android.widget.TextView;
 import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
-	public TextView tv; // A handle to the main text field
-	public ViewGroup layout; // A handle to the main frame
+	private TextView tv; // A handle to the main text field
+	private ViewGroup layout; // A handle to the main frame
+
+	protected TextContainer text;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
