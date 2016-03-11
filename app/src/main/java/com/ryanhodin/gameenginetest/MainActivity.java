@@ -9,7 +9,6 @@ import android.widget.TextView;
 import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
-	private TextView tv; // A handle to the main text field
 	private ViewGroup layout; // A handle to the main frame
 
 	protected TextContainer text;
@@ -17,8 +16,9 @@ public class MainActivity extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		tv=(TextView)findViewById(R.id.mainText);
 		layout=(ViewGroup)findViewById(R.id.mainLayout);
+
+		text=new TextContainer(new ChangeHandler());
 	}
 
 	private class ChangeHandler implements TextContainer.Callable {
