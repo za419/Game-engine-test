@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 				@Override
 				public void run() {
 					TextView overlay=new TextView(MainActivity.this);
-					//layout.removeAllViews();
+					layout.removeAllViews();
 					layout.addView(overlay);
 					overlay.setText(replacement);
 				}
