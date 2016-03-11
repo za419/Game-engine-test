@@ -75,6 +75,16 @@ public class TextContainer {
 	public String prepend(String addition) {
 		return text(addition+text());
 	}
+	// Suspends all callbacks in the near future
+	public void forceCallbackSuspend() {
+		mCallbackReady=false;
+	}
+
+	// Continues all waiting callbacks, even if others may be running. This is needed to undo the
+	//  forced suspension of calling the above function.
+	public void forceCallbackContinue() {
+		mCallbackReady=true;
+	}
 
 	@Override
 	public boolean equals(Object obj) {
