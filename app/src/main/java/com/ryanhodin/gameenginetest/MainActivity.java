@@ -138,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
 		text.prepend(closer + "\n\n");
 		text.append(closer);
 		text.forceCallbackContinue();
-		sleep(1000);
+		sleep(1000/factor);
 		animLength-=1500;
 		closingAnimation(text, closer);
 	}
@@ -146,14 +146,42 @@ public class MainActivity extends AppCompatActivity {
 	@UiThread
 	public void closingAnimation(String content, String closer) {
 		setContentView(R.layout.closer);
-		TextView head=(TextView)findViewById(R.id.animationHead);
-		TextView body=(TextView)findViewById(R.id.animationBody);
-		TextView tail=(TextView)findViewById(R.id.animationTail);
+		layout=(ViewGroup)findViewById(R.id.animationText);
+		final TextView head=(TextView)findViewById(R.id.animationHead);
+		final TextView body=(TextView)findViewById(R.id.animationBody);
+		final TextView tail=(TextView)findViewById(R.id.animationTail);
 
 		head.setText(closer);
 		tail.setText(closer);
 
-		closer=closer.substring(closer.length());
+		content=content.substring(closer.length());
+		content=content.substring(0, content.length()-closer.length());
+		body.setText(content);
+
+		Thread th=new Thread(new Runnable() {
+			@Override
+			public void run() {
+				sleep(2500+1000/factor);
+				runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						body.animate()
+								.alpha(0)
+								.setDuration(animLength*4)
+								.setListener(new AnimatorListenerAdapter() {
+									@Override
+									public void onAnimationEnd(Animator animation) {
+										layout.removeView(body);
+
+										// TODO: Head and tail animate together, then one disappears
+										// Then the screen fades to the color View.
+									}
+								});
+					}
+				});
+			}
+		});
+		th.start();
 	}
 
 	public void closingAnimation(final TextContainer content, final String closer) {
