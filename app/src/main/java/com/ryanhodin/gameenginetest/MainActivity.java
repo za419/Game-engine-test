@@ -11,6 +11,8 @@ import org.w3c.dom.Text;
 public class MainActivity extends AppCompatActivity {
 	private ViewGroup layout; // A handle to the main frame
 
+	private Thread worker;
+
 	protected TextContainer text;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +21,20 @@ public class MainActivity extends AppCompatActivity {
 		layout=(ViewGroup)findViewById(R.id.mainLayout);
 
 		text=new TextContainer(new ChangeHandler());
+
+		reinitializeWorker();
+	}
+
+	private void reinitializeWorker() {
+		if (worker!=null)
+			worker.interrupt();
+
+		worker=new Thread(new Runnable() {
+			@Override
+			public void run() {
+				updateText();
+			}
+		});
 	}
 
 	private class ChangeHandler implements TextContainer.Callable {
@@ -29,5 +45,20 @@ public class MainActivity extends AppCompatActivity {
 			layout.addView(overlay);
 			overlay.setText(replacement);
 		}
+	}
+
+	public boolean sleep(long millis) {
+		try {
+			Thread.sleep(millis);
+		} catch (InterruptedException e) {
+			return true;
+		}
+		return false;
+	}
+
+	protected void updateText() {
+		text.text("Hello there.");
+		sleep(1250);
+		text.text("Hello there.\n\nYou must be wondering why I brought you here.");
 	}
 }
