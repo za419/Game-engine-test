@@ -63,5 +63,9 @@ public class MainActivity extends AppCompatActivity {
 		text.text("Hello there.");
 		sleep(5000);
 		text.append("\n\nYou must be wondering why I brought you here.");
+		sleep(6000);
+		text.append("\nWell, I'll tell you.");
+		sleep(2500);
+		text.prepend("This is not what it seems to be.\n\n");
 	}
 }
