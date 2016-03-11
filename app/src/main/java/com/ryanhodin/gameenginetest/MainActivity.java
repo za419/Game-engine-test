@@ -173,6 +173,7 @@ public class MainActivity extends AppCompatActivity {
 				.setListener(new AnimatorListenerAdapter() {
 					@Override
 					public void onAnimationEnd(Animator animation) {
+						layout.removeView(tv);
 						Thread th=new Thread(new Runnable() {
 							@Override
 							public void run() {
