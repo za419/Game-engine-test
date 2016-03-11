@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
 		text.prepend("Please... I'm... I'm scared.\n\n");
 		text.forceCallbackContinue();
 		sleep(2000);
-		text.prepend("We will get away from...\nBut I swear, I will get us out of here.\n");
+		text.prepend("I'm sorry. We will get away from...\nBut I swear, I will get us out of here.\n");
 		sleep(1000);
 		text.prepend("From him.\n");
 		sleep(1250);
