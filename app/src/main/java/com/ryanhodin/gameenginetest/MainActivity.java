@@ -159,28 +159,44 @@ public class MainActivity extends AppCompatActivity {
 		content=content.substring(1, content.length()-closer.length()-1);
 		body.setText(content);
 
-		Thread th=new Thread(new Runnable() {
-			@Override
-			public void run() {
-				sleep(2500+1000/factor);
-				runOnUiThread(new Runnable() {
+		long fadeLength=10*animLength;
+
+		animLayout.setAlpha(0);
+		animLayout.animate()
+				.alpha(1)
+				.setDuration(fadeLength)
+				.setListener(null);
+
+		layout.animate()
+				.alpha(0)
+				.setDuration(fadeLength)
+				.setListener(new AnimatorListenerAdapter() {
 					@Override
-					public void run() {
-						body.animate()
-								.alpha(0)
-								.setDuration(animLength*4)
-								.setListener(new AnimatorListenerAdapter() {
+					public void onAnimationEnd(Animator animation) {
+						Thread th=new Thread(new Runnable() {
+							@Override
+							public void run() {
+								sleep(2500+1000/factor);
+								runOnUiThread(new Runnable() {
 									@Override
-									public void onAnimationEnd(Animator animation) {
-										// TODO: Head and tail animate together, then one disappears
-										// Then the screen fades to the color View.
+									public void run() {
+										body.animate()
+												.alpha(0)
+												.setDuration(animLength*4)
+												.setListener(new AnimatorListenerAdapter() {
+													@Override
+													public void onAnimationEnd(Animator animation) {
+														// TODO: Head and tail animate together, then one disappears
+														// Then the screen fades to the color View.
+													}
+												});
 									}
 								});
+							}
+						});
+						th.start();
 					}
 				});
-			}
-		});
-		th.start();
 	}
 
 	public void closingAnimation(final TextContainer content, final String closer) {
