@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <integer name="animTime">1000</integer>
-    <item name="pauseFactor" type="fraction">450%</item>
+    <item name="pauseFactor" type="fraction">350%</item>
 </resources>
