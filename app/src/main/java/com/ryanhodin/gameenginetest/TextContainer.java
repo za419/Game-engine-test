@@ -69,7 +69,7 @@ public class TextContainer {
 	}
 
 	public String append(String addition) {
-		text(text()+addition);
+		return text(text()+addition);
 	}
 
 	@Override
