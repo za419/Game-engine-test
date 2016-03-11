@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
 	public boolean sleep(long millis) {
 		try {
-			Thread.sleep(millis);
+			Thread.sleep(10*millis);
 		} catch (InterruptedException e) {
 			return true;
 		}
@@ -86,13 +86,13 @@ public class MainActivity extends AppCompatActivity {
 		text.prepend("Please... I'm... I'm scared.\n\n");
 		text.forceCallbackContinue();
 		sleep(2000);
-		text.prepend("But I swear, I will get us out of here.\nWe will get away from...\n");
+		text.prepend("We will get away from...\nBut I swear, I will get us out of here.\n");
 		sleep(1000);
 		text.prepend("From him.\n");
 		sleep(1250);
 		text.append("Just stay still, stay calm. No point in fighting now.\n\n\n");
 		sleep(2000);
-		String closer="Everything is going to be alright.";
+		String closer="Everything is going to be alright.\n";
 
 		text.forceCallbackSuspend();
 		text.prepend(closer);
