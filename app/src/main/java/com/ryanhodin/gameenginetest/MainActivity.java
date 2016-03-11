@@ -35,13 +35,14 @@ public class MainActivity extends AppCompatActivity {
 				updateText();
 			}
 		});
+		worker.start();
 	}
 
 	private class ChangeHandler implements TextContainer.Callable {
 		@Override
 		public void call(String old, String replacement) {
 			TextView overlay=new TextView(MainActivity.this);
-			layout.removeAllViews();
+			//layout.removeAllViews();
 			layout.addView(overlay);
 			overlay.setText(replacement);
 		}
