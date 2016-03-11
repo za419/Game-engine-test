@@ -104,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
 		text.prepend("Just remember... This is not what it seems to be.\n\n");
 		sleep(3500);
 		text.forceCallbackSuspend();
+		animLength+=250;
 		text.prepend("Just wait, I'll find a way to get us out of here, I swear!\n\n");
 		text.append("\n\nYou see, I happen to know a great many things.");
 		text.forceCallbackContinue();
@@ -114,11 +115,13 @@ public class MainActivity extends AppCompatActivity {
 		text.forceCallbackContinue();
 		sleep(1500);
 		text.forceCallbackSuspend();
+		animLength+=250;
 		text.text(currentText);
 		text.append("\nJust like you never will again.");
 		text.prepend("Please... I'm... I'm scared.\n\n");
 		text.forceCallbackContinue();
 		sleep(2000);
+		animLength-=500;
 		text.prepend("I'm sorry. We will get away from...\nBut I swear, I will get us out of here.\n");
 		sleep(1000);
 		text.prepend("From him.\n");
@@ -128,8 +131,11 @@ public class MainActivity extends AppCompatActivity {
 		String closer="Everything is going to be alright.";
 
 		text.forceCallbackSuspend();
+		animLength+=1500;
 		text.prepend(closer + "\n\n");
 		text.append(closer);
 		text.forceCallbackContinue();
+		sleep(1000);
+		animLength-=1500;
 	}
 }
