@@ -146,11 +146,11 @@ public class MainActivity extends AppCompatActivity {
 
 	@UiThread
 	public void closingAnimation(String content, String closer) {
-		View.inflate(this, R.layout.closer, layout);
-		layout=(ViewGroup)findViewById(R.id.animationText);
-		final TextView head=(TextView)findViewById(R.id.animationHead);
-		final TextView body=(TextView)findViewById(R.id.animationBody);
-		final TextView tail=(TextView)findViewById(R.id.animationTail);
+		View root=View.inflate(this, R.layout.closer, layout);
+		ViewGroup animLayout=(ViewGroup)root.findViewById(R.id.animationText);
+		final TextView head=(TextView)layout.findViewById(R.id.animationHead);
+		final TextView body=(TextView)layout.findViewById(R.id.animationBody);
+		final TextView tail=(TextView)layout.findViewById(R.id.animationTail);
 
 		head.setText(closer);
 		tail.setText(closer);
