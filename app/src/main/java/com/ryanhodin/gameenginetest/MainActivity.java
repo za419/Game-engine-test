@@ -66,11 +66,26 @@ public class MainActivity extends AppCompatActivity {
 		sleep(6000);
 		text.append("\nWell, I'll tell you.");
 		sleep(2500);
-		text.prepend("This is not what it seems to be.\n\n");
+		text.prepend("We don't have a lot of time.\n");
+		sleep(1250);
+		text.prepend("Just remember... This is not what it seems to be.\n\n");
 		sleep(3500);
 		text.forceCallbackSuspend();
 		text.prepend("Just wait, I'll find a way to get us out of here, I swear!\n\n");
 		text.append("\n\nYou see, I happen to know a great many things.");
 		text.forceCallbackContinue();
+		sleep(1750);
+		text.forceCallbackSuspend();
+		text.append("\nThings that you'd rather never see the light.");
+		String currentText=text.prepend("Please... I'm...\n\n");
+		text.forceCallbackContinue();
+		sleep(1500);
+		text.forceCallbackSuspend();
+		text.text(currentText);
+		text.append("\nJust like you never will again.");
+		text.prepend("Please... I'm... I'm scared.\n\n");
+		text.forceCallbackContinue();
+		sleep(2000);
+
 	}
 }
