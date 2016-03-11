@@ -156,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
 
 		content=content.substring(closer.length());
 		content=content.substring(1, content.length()-closer.length()-1);
-		body.setText("\""+content+"\"");
+		body.setText(content);
 
 		Thread th=new Thread(new Runnable() {
 			@Override
