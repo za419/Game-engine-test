@@ -68,6 +68,10 @@ public class TextContainer {
 		return out;
 	}
 
+	public String append(String addition) {
+		text(text()+addition);
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		return obj instanceof TextContainer && ((TextContainer) obj).mText.equals(mText);

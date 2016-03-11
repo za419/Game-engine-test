@@ -62,6 +62,6 @@ public class MainActivity extends AppCompatActivity {
 	protected void updateText() {
 		text.text("Hello there.");
 		sleep(5000);
-		text.text("Hello there.\n\nYou must be wondering why I brought you here.");
+		text.append("\n\nYou must be wondering why I brought you here.");
 	}
 }
