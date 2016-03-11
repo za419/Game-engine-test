@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
 
 	public boolean sleep(long millis) {
 		try {
-			Thread.sleep(Math.round(factor*millis));
+			Thread.sleep(animLength+Math.round(factor*millis));
 		} catch (InterruptedException e) {
 			return true;
 		}
