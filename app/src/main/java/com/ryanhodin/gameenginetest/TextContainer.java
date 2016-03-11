@@ -2,6 +2,7 @@ package com.ryanhodin.gameenginetest;
 
 public class TextContainer {
 	protected String mText;
+	protected Runnable mCallback;
 
 	public TextContainer() {
 		mText="";
@@ -9,6 +10,15 @@ public class TextContainer {
 
 	public TextContainer(final String text) {
 		mText=text;
+	}
+
+	public TextContainer(Runnable callback) {
+		mCallback=callback;
+	}
+
+	public TextContainer(final String text, Runnable callback) {
+		mText=text;
+		mCallback=callback;
 	}
 
 	public TextContainer(TextContainer copy) {
