@@ -61,12 +61,12 @@ public class MainActivity extends AppCompatActivity {
 
 	protected void updateText() {
 		text.text("Hello there.");
-		sleep(5000);
+		sleep(2500);
 		text.append("\n\nYou must be wondering why I brought you here.");
-		sleep(6000);
+		sleep(2600);
 		text.append("\nWell, I'll tell you.");
 		sleep(2500);
-		text.prepend("We don't have a lot of time.\n");
+		text.prepend("You're awake... Finally. We don't have a lot of time.\n");
 		sleep(1250);
 		text.prepend("Just remember... This is not what it seems to be.\n\n");
 		sleep(3500);
