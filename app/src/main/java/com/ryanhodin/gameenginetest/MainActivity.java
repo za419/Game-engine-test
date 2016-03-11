@@ -1,5 +1,7 @@
 package com.ryanhodin.gameenginetest;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -22,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 		setContentView(R.layout.activity_main);
 		layout=(ViewGroup)findViewById(R.id.mainLayout);
 		tv=(TextView)findViewById(R.id.mainText);
+		tv.setAlpha(1);
 
 		text=new TextContainer(new ChangeHandler());
 
@@ -56,7 +59,21 @@ public class MainActivity extends AppCompatActivity {
 					overlay.setText(replacement);
 					overlay.setAlpha(0);
 
+					overlay.animate()
+							.alpha(1)
+							.setDuration(animLength)
+							.setListener(null);
 
+					tv.animate()
+							.alpha(0)
+							.setDuration(animLength)
+							.setListener(new AnimatorListenerAdapter() {
+								@Override
+								public void onAnimationEnd(Animator animation) {
+									layout.removeView(tv);
+									tv=overlay;
+								}
+							});
 				}
 			});
 		}
