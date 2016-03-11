@@ -1,5 +1,6 @@
 package com.ryanhodin.gameenginetest;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.ViewGroup;
@@ -23,6 +24,10 @@ public class MainActivity extends AppCompatActivity {
 		tv=(TextView)findViewById(R.id.mainText);
 
 		text=new TextContainer(new ChangeHandler());
+
+		Resources resources=getResources();
+		animLength=resources.getInteger(R.integer.anim_time);
+		factor=resources.getFraction(R.fraction.pause_factor, 1, 1);
 
 		reinitializeWorker();
 	}
@@ -74,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
 		text.text("Hello there.");
 		sleep(2500);
 		text.append("\n\nYou must be wondering why I brought you here.");
-		sleep(2500+(1 / factor));
+		sleep(2500 + (1 / factor));
 		text.append("\nWell, I'll tell you.");
 		sleep(2500);
 		text.prepend("You're awake... Finally. We don't have a lot of time.\n");
@@ -106,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
 		String closer="Everything is going to be alright.";
 
 		text.forceCallbackSuspend();
-		text.prepend(closer+"\n\n");
+		text.prepend(closer + "\n\n");
 		text.append(closer);
 		text.forceCallbackContinue();
 	}
