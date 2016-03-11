@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
 		sleep(1000);
 		text.prepend("From him.\n");
 		sleep(1250);
-		text.append("Just stay still, stay calm. No point in fighting now.\n\n\n");
+		text.append("\n\nJust stay still, stay calm. No point in fighting now.\n\n\n");
 		sleep(2000);
 		String closer="Everything is going to be alright.\n";
 
