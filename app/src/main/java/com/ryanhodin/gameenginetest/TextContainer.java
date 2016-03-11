@@ -1,7 +1,5 @@
 package com.ryanhodin.gameenginetest;
 
-import android.util.Log;
-
 public class TextContainer {
 	protected String mText; // The contained text
 	protected Callable mCallback=null; // The callback for when the text is changed
@@ -45,7 +43,6 @@ public class TextContainer {
 	}
 
 	public String text (String replacement) {
-		Log.w("vdsadnj", "dsauh");
 		final String out=mText;
 		mText=replacement;
 		Thread th=new Thread(new Runnable() {
@@ -54,15 +51,12 @@ public class TextContainer {
 				if (mCallback==null || mCallbackWaiting)
 					return;
 				try {
-					Log.w("TextContainer", "Callback pending");
 					if (!mCallbackReady)
 						mCallbackWaiting=true;
 					while (!mCallbackReady)
 						Thread.sleep(16);
 					mCallbackReady=false;
-					Log.w("TextContainer", "Callback calling");
 					mCallback.call(out, mText);
-					Log.w("TextContainer", "Callback done");
 					mCallbackReady=true;
 				} catch (InterruptedException e) {
 					e.printStackTrace();
