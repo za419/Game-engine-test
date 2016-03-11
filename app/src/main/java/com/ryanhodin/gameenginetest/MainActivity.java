@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.UiThread;
 import android.support.annotation.WorkerThread;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
@@ -145,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
 
 	@UiThread
 	public void closingAnimation(String content, String closer) {
-		setContentView(R.layout.closer);
+		View.inflate(this, R.layout.closer, layout);
 		layout=(ViewGroup)findViewById(R.id.animationText);
 		final TextView head=(TextView)findViewById(R.id.animationHead);
 		final TextView body=(TextView)findViewById(R.id.animationBody);
