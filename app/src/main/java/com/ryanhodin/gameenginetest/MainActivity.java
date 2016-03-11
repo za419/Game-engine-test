@@ -29,8 +29,8 @@ public class MainActivity extends AppCompatActivity {
 		text=new TextContainer(new ChangeHandler());
 
 		Resources resources=getResources();
-		animLength=resources.getInteger(R.integer.anim_time);
-		factor=resources.getFraction(R.fraction.pause_factor, 1, 1);
+		animLength=resources.getInteger(R.integer.animTime);
+		factor=resources.getFraction(R.fraction.pauseFactor, 1, 1);
 
 		reinitializeWorker();
 	}
