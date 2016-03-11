@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+	private TextView tv; // The currently displayed textview.
 	private ViewGroup layout; // A handle to the main frame
 
 	private double factor=2.5; // Timing delay factor
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		layout=(ViewGroup)findViewById(R.id.mainLayout);
+		tv=(TextView)findViewById(R.id.mainText);
 
 		text=new TextContainer(new ChangeHandler());
 
@@ -40,13 +42,20 @@ public class MainActivity extends AppCompatActivity {
 	private class ChangeHandler implements TextContainer.Callable {
 		@Override
 		public void call(String old, final String replacement) {
+			final TextView overlay=new TextView(MainActivity.this);
 			runOnUiThread(new Runnable() {
 				@Override
 				public void run() {
-					TextView overlay=new TextView(MainActivity.this);
-					layout.removeAllViews();
 					layout.addView(overlay);
 					overlay.setText(replacement);
+				}
+			});
+			sleep(250 / factor);
+			runOnUiThread(new Runnable() {
+				@Override
+				public void run() {
+					layout.removeView(tv);
+					tv=overlay;
 				}
 			});
 		}
@@ -61,11 +70,15 @@ public class MainActivity extends AppCompatActivity {
 		return false;
 	}
 
+	public boolean sleep(double millis) { // Rounds its argument as a helper.
+		return sleep(Math.round(millis));
+	}
+
 	protected void updateText() {
 		text.text("Hello there.");
 		sleep(2500);
 		text.append("\n\nYou must be wondering why I brought you here.");
-		sleep(2500+Math.round(1/factor));
+		sleep(2500+(1 / factor));
 		text.append("\nWell, I'll tell you.");
 		sleep(2500);
 		text.prepend("You're awake... Finally. We don't have a lot of time.\n");
