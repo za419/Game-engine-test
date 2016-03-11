@@ -145,7 +145,15 @@ public class MainActivity extends AppCompatActivity {
 
 	@UiThread
 	public void closingAnimation(String content, String closer) {
+		setContentView(R.layout.closer);
+		TextView head=(TextView)findViewById(R.id.animationHead);
+		TextView body=(TextView)findViewById(R.id.animationBody);
+		TextView tail=(TextView)findViewById(R.id.animationTail);
 
+		head.setText(closer);
+		tail.setText(closer);
+
+		closer=closer.substring(closer.length());
 	}
 
 	public void closingAnimation(final TextContainer content, final String closer) {
