@@ -59,8 +59,8 @@ public class MainActivity extends AppCompatActivity {
 				@Override
 				public void run() {
 					layout.addView(overlay);
-					overlay.setText(replacement);
 					overlay.setAlpha(0);
+					overlay.setText(replacement);
 
 					overlay.animate()
 							.alpha(1)
@@ -156,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
 		tail.setText(closer);
 
 		content=content.substring(closer.length());
-		content=content.substring(1, content.length()-closer.length()-1);
+		content=content.substring(1, content.length()-closer.length() - 1);
 		body.setText(content);
 
 		long fadeLength=Math.round(0.5*animLength);
@@ -174,16 +174,16 @@ public class MainActivity extends AppCompatActivity {
 					@Override
 					public void onAnimationEnd(Animator animation) {
 						layout.removeView(tv);
-						Thread th=new Thread(new Runnable() {
+						Thread th = new Thread(new Runnable() {
 							@Override
 							public void run() {
-								sleep(2500+1000/factor);
+								sleep(1500 + 1000 / factor);
 								runOnUiThread(new Runnable() {
 									@Override
 									public void run() {
 										body.animate()
 												.alpha(0)
-												.setDuration(animLength*4)
+												.setDuration(animLength * 4)
 												.setListener(new AnimatorListenerAdapter() {
 													@Override
 													public void onAnimationEnd(Animator animation) {
