@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
 	}
 
 	protected void updateText() {
+		sleep(500);
 		text.text("Hello there.");
 		sleep(1250);
 		text.text("Hello there.\n\nYou must be wondering why I brought you here.");
