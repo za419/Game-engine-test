@@ -159,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
 		content=content.substring(1, content.length()-closer.length()-1);
 		body.setText(content);
 
-		long fadeLength=10*animLength;
+		long fadeLength=Math.round(0.5*animLength);
 
 		animLayout.setAlpha(0);
 		animLayout.animate()
