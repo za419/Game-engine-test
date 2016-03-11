@@ -4,6 +4,8 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.support.annotation.UiThread;
+import android.support.annotation.WorkerThread;
 import android.support.v7.app.AppCompatActivity;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -92,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
 		return sleep(Math.round(millis));
 	}
 
+	@WorkerThread
 	protected void updateText() {
 		text.text("Hello there.");
 		sleep(2500);
@@ -137,5 +140,20 @@ public class MainActivity extends AppCompatActivity {
 		text.forceCallbackContinue();
 		sleep(1000);
 		animLength-=1500;
+		closingAnimation(text, closer);
+	}
+
+	@UiThread
+	public void closingAnimation(String content, String closer) {
+
+	}
+
+	public void closingAnimation(final TextContainer content, final String closer) {
+		runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				closingAnimation(content.text(), closer);
+			}
+		});
 	}
 }
