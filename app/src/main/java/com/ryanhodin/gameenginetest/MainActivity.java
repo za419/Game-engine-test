@@ -67,5 +67,10 @@ public class MainActivity extends AppCompatActivity {
 		text.append("\nWell, I'll tell you.");
 		sleep(2500);
 		text.prepend("This is not what it seems to be.\n\n");
+		sleep(3500);
+		text.forceCallbackSuspend();
+		text.prepend("Just wait, I'll find a way to get us out of here, I swear!\n\n");
+		text.append("\n\nYou see, I happen to know a great many things.");
+		text.forceCallbackContinue();
 	}
 }
